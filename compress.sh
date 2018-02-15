@@ -13,7 +13,7 @@ for f in $galerie/*.jpg; do
 	docker run --rm -it -v "$(pwd)/$galerie/thumbs:/work" v4tech/imagemagick convert /work/$filename -resize 160x160 /work/$filename
 	docker run --rm -it -v "$(pwd)/$galerie:/work" v4tech/imagemagick convert /work/$filename -resize 800x800 /work/$filename
 	filename=${filename%%.*}
-	echo "INSERT INTO bild ('name', 'fk_galerie') VALUES ('$filename', $galerie);"	>> $galerie.sql
+	echo "INSERT INTO bild (name, fk_galerie) VALUES ('$filename', $galerie);"	>> $galerie.sql
 done
 
 git add $galerie
